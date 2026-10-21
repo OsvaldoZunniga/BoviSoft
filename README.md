@@ -1,75 +1,57 @@
-# Nuxt Minimal Starter
+# BoviSoft Frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+[English](#english) | [Español](#español)
 
-## Setup
+---
 
-Make sure to install dependencies:
+## English
 
+### Overview
+BoviSoft Frontend is a modern web application built with Nuxt 4, Vue 3, and TypeScript for livestock management at Finca La Piolina.
+
+### Features
+- Complete bovine catalog with filtering by status, breed, and owner
+- Bovine registration and editing with image upload and genealogy tracking
+- Quick photo replacement from the bovine detail view
+- Farm events agenda (vaccination, births, sales, treatments)
+- Integrated birth event workflow with automatic newborn calf registration
+- Dark and light theme support
+
+### Prerequisites
+- Node.js 18+ or 20+
+- [BoviSoft API](https://github.com/OsvaldoZunniga/BoviSoftAPI.git) running on port 8082
+
+### Installation and Setup
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The application will be available at `http://localhost:3000`.
 
-Build the application for production:
+---
 
+## Español
+
+### Descripción General
+BoviSoft Frontend es una aplicación web moderna desarrollada con Nuxt 4, Vue 3 y TypeScript para la gestión ganadera de Finca La Piolina.
+
+### Funcionalidades
+- Catálogo de bovinos con filtros avanzados por estado, raza y propietario
+- Registro y edición de ejemplares con carga de imágenes y trazabilidad genealógica
+- Actualización rápida de fotografía desde la ficha de detalle
+- Agenda de eventos de la finca (vacunaciones, partos, ventas, tratamientos)
+- Flujo integrado de partos con registro automático del ternero recién nacido
+- Soporte para modo oscuro y claro
+
+### Requisitos Previos
+- Node.js 18+ o 20+
+- [BoviSoft API](https://github.com/OsvaldoZunniga/BoviSoftAPI.git) en ejecución en el puerto 8082
+
+### Instalación y Ejecución
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm install
+npm run dev
 ```
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+La aplicación estará disponible en `http://localhost:3000`.
