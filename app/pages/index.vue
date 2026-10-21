@@ -1,3 +1,7 @@
+<script setup lang="ts">
+await navigateTo("/cattle");
+</script>
+
 <template>
-    <div>Hello World!, This is the home page of cattle Management</div>
+  <div></div>
 </template>

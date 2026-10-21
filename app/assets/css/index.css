@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+:root,
+[data-theme="light"] {
+  --color-primary: #1b382b;
+  --color-primary-hover: #12281e;
+  --color-primary-subtle: #e7efe9;
+  --color-secondary: #6e4e2e;
+  --color-secondary-hover: #563c22;
+  --color-secondary-subtle: #f5eee6;
+  --color-accent: #b37d3f;
+  --color-accent-hover: #986730;
+  --color-accent-subtle: #faf3e8;
+  --status-active: #1f6b3f;
+  --status-active-bg: #e6f4ec;
+  --status-inactive: #576574;
+  --status-inactive-bg: #f1f3f5;
+  --status-sold: #8c5311;
+  --status-sold-bg: #fdf3e7;
+  --status-danger: #a72828;
+  --status-danger-bg: #fdeeee;
+  --bg-body: #f3f6f3;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #fafbf9;
+  --bg-surface-hover: #f1f4f0;
+  --border-color: #d6dfd5;
+  --border-color-subtle: #e5ece4;
+  --border-focus: #1b382b;
+  --text-main: #131a15;
+  --text-primary: #131a15;
+  --text-secondary: #516254;
+  --text-muted: #6f8072;
+  --text-subtle: #8ea091;
+  --text-inverse: #ffffff;
+  --accent-gold: #b37d3f;
+  --shadow-sm: 0 1px 3px rgba(19, 26, 21, 0.06);
+  --shadow-md: 0 4px 14px rgba(19, 26, 21, 0.08);
+  --shadow-lg: 0 10px 30px rgba(19, 26, 21, 0.12);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+}
+[data-theme="dark"] {
+  --color-primary: #2d5a44;
+  --color-primary-hover: #3a7257;
+  --color-primary-subtle: #16281f;
+  --color-secondary: #94693f;
+  --color-secondary-hover: #aa7a4c;
+  --color-secondary-subtle: #2b1f14;
+  --color-accent: #cfa05d;
+  --color-accent-hover: #dfb271;
+  --color-accent-subtle: #2d2315;
+  --status-active: #348e58;
+  --status-active-bg: #11281a;
+  --status-inactive: #758392;
+  --status-inactive-bg: #1c2227;
+  --status-sold: #c97920;
+  --status-sold-bg: #2b1b0b;
+  --status-danger: #c94040;
+  --status-danger-bg: #2d1414;
+  --bg-body: #0c110e;
+  --bg-surface: #141b16;
+  --bg-surface-elevated: #1a231d;
+  --bg-surface-hover: #212c25;
+  --border-color: #243128;
+  --border-color-subtle: #1c2720;
+  --border-focus: #3a7257;
+  --text-main: #edf2ed;
+  --text-primary: #edf2ed;
+  --text-secondary: #9bb09f;
+  --text-muted: #7b8f7f;
+  --text-subtle: #57675a;
+  --text-inverse: #0c110e;
+  --accent-gold: #cfa05d;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+body {
+  min-height: 100vh;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button, input, select, textarea {
+  font: inherit;
+}
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+.btn--secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+.btn--secondary:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--text-muted);
+}
+.btn--danger {
+  background-color: var(--status-danger-bg);
+  color: var(--status-danger);
+  border-color: var(--status-danger);
+}
+.btn--danger:hover {
+  background-color: var(--status-danger);
+  color: #ffffff;
+}
+.btn--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge--active {
+  background-color: var(--status-active-bg);
+  color: var(--status-active);
+  border: 1px solid var(--status-active);
+}
+.badge--inactive {
+  background-color: var(--status-inactive-bg);
+  color: var(--status-inactive);
+  border: 1px solid var(--border-color);
+}
+.badge--sold {
+  background-color: var(--status-sold-bg);
+  color: var(--status-sold);
+  border: 1px solid var(--status-sold);
+}
+.badge--unassigned {
+  background-color: var(--status-inactive-bg);
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
+}
+.badge--tag {
+  background-color: var(--color-secondary-subtle);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+}
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
