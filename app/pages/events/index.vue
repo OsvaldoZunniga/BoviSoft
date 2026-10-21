@@ -106,7 +106,7 @@ const {
   deleteEvent,
 } = useFarmEvents();
 
-const { createCattle } = useCattle();
+const { createCattle, updateCattleStatus } = useCattle();
 
 const selectedType = ref<string | null>(null);
 const isModalOpen = ref(false);
@@ -147,6 +147,7 @@ const closeModal = () => {
 const handleEventSubmit = async (payload: {
   event: Omit<FarmEvent, 'id'>;
   calf?: Omit<Cattle, 'id'>;
+  soldCattleIds?: string[];
 }) => {
   isSubmitting.value = true;
   try {
@@ -156,6 +157,11 @@ const handleEventSubmit = async (payload: {
       await createEvent(payload.event);
       if (payload.calf) {
         await createCattle(payload.calf);
+      }
+      if (payload.soldCattleIds && payload.soldCattleIds.length > 0) {
+        for (const cattleId of payload.soldCattleIds) {
+          await updateCattleStatus(cattleId, 2);
+        }
       }
     }
     closeModal();

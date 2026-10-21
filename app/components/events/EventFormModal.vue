@@ -55,6 +55,12 @@
         :event-date="formData.date"
       />
 
+      <SaleAnimalsSection
+        v-if="!isEdit && formData.type === 'Venta'"
+        ref="saleSectionRef"
+        :cattle-list="cattleList"
+      />
+
       <div class="modal-actions">
         <button
           type="button"
@@ -81,6 +87,7 @@ import type { FarmEvent } from '~/types/FarmEvent';
 import type { Cattle } from '~/types/Cattle';
 import BaseModal from '~/components/ui/BaseModal.vue';
 import CalfFormSection from '~/components/events/CalfFormSection.vue';
+import SaleAnimalsSection from '~/components/events/SaleAnimalsSection.vue';
 import { EVENT_TYPES } from '~/composables/useFarmEvents';
 import { useCattle } from '~/composables/useCattle';
 
@@ -97,6 +104,7 @@ const emit = defineEmits<{
     payload: {
       event: Omit<FarmEvent, 'id'>;
       calf?: Omit<Cattle, 'id'>;
+      soldCattleIds?: string[];
     }
   ): void;
 }>();
@@ -119,6 +127,7 @@ const formData = reactive({
 });
 
 const calfSectionRef = ref<InstanceType<typeof CalfFormSection> | null>(null);
+const saleSectionRef = ref<InstanceType<typeof SaleAnimalsSection> | null>(null);
 
 watch(
   () => props.initialData,
@@ -139,11 +148,12 @@ watch(
 const modalTitle = computed(() => {
   if (isEdit.value) return 'Editar Evento de la Finca';
   if (formData.type === 'Parto') return 'Registrar Parto y Nuevo Ternero';
+  if (formData.type === 'Venta') return 'Registrar Venta de Ganado';
   return 'Registrar Evento de la Finca';
 });
 
 const modalSize = computed(() => {
-  return !isEdit.value && formData.type === 'Parto' ? 'lg' : 'md';
+  return !isEdit.value && (formData.type === 'Parto' || formData.type === 'Venta') ? 'lg' : 'md';
 });
 
 const handleSubmit = () => {
@@ -158,7 +168,12 @@ const handleSubmit = () => {
     calfPayload = calfSectionRef.value.getCalfPayload();
   }
 
-  emit('submit', { event: eventPayload, calf: calfPayload });
+  let soldCattleIds: string[] | undefined;
+  if (!isEdit.value && formData.type === 'Venta' && saleSectionRef.value) {
+    soldCattleIds = saleSectionRef.value.getSoldCattleIds();
+  }
+
+  emit('submit', { event: eventPayload, calf: calfPayload, soldCattleIds });
 };
 </script>
 

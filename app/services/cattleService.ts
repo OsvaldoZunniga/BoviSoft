@@ -42,6 +42,12 @@ export const cattleService = {
     });
   },
 
+  async updateStatus(id: string, statusId: number): Promise<Cattle> {
+    return apiFetch<Cattle>(`/cattle/${id}/status`, {
+      method: 'PATCH',
+      body: { statusId },
+    });
+  },
 
   async delete(id: string): Promise<void> {
     return apiFetch<void>(`/cattle/${id}/destroy`, {

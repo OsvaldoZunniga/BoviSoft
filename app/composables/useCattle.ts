@@ -124,6 +124,24 @@ export function useCattle() {
     }
   };
 
+  const updateCattleStatus = async (id: string, statusId: number): Promise<boolean> => {
+    loading.value = true;
+    try {
+      const updated = await cattleService.updateStatus(id, statusId);
+      const index = cattleList.value.findIndex((c) => c.id === id);
+      if (index !== -1) {
+        cattleList.value[index] = { ...cattleList.value[index], ...updated };
+      }
+      return true;
+    } catch (err: any) {
+      const msg = err?.message || 'Error al actualizar el estado del bovino';
+      mostrarToast(msg, 'error');
+      return false;
+    } finally {
+      loading.value = false;
+    }
+  };
+
   const deleteCattle = async (id: string): Promise<boolean> => {
     loading.value = true;
     try {
@@ -157,6 +175,7 @@ export function useCattle() {
     createCattle,
     updateCattle,
     updateCattleImage,
+    updateCattleStatus,
     deleteCattle,
   };
 }
